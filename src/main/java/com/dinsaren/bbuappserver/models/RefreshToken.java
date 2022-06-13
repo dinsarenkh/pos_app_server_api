@@ -3,7 +3,7 @@ package com.dinsaren.bbuappserver.models;
 import javax.persistence.*;
 import java.time.Instant;
 
-@Entity(name = "bbu_refresh_token")
+@Entity(name = "pos_refresh_token")
 public class RefreshToken {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

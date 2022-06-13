@@ -2,14 +2,15 @@ package com.dinsaren.bbuappserver.service.impl;
 
 import com.dinsaren.bbuappserver.constants.Constants;
 import com.dinsaren.bbuappserver.models.Category;
-import com.dinsaren.bbuappserver.payload.response.CategoryRes;
+import com.dinsaren.bbuappserver.payload.req.CategoryCreateReq;
+import com.dinsaren.bbuappserver.payload.req.CategoryUpdateReq;
+import com.dinsaren.bbuappserver.payload.res.CategoryRes;
 import com.dinsaren.bbuappserver.repository.CategoryRepository;
 import com.dinsaren.bbuappserver.service.CategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -21,48 +22,47 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<CategoryRes> findAll() {
-        List<CategoryRes> resList = new ArrayList<>();
-        List<Category> list = categoryRepository.findAllByStatus(Constants.ACTIVE_STATUS);
-        list.forEach(c -> {
+        List<CategoryRes> categoryResList = new ArrayList<>();
+        categoryRepository.findAllByStatus(Constants.ACTIVE_STATUS).forEach(c -> {
             CategoryRes res = new CategoryRes();
-            res.setData(c);
-            resList.add(res);
-
+            res.setDataRes(c);
+            categoryResList.add(res);
         });
-        return resList;
+        return categoryResList;
     }
 
     @Override
-    public void create(Category req) {
-        Optional<Category> find = categoryRepository.findById(req.getId());
-        if (find.isEmpty()) {
-            categoryRepository.save(req);
+    public void create(CategoryCreateReq req) {
+        Category category = new Category();
+        category.setCreate(req);
+        categoryRepository.save(category);
+    }
+
+    @Override
+    public void delete(CategoryUpdateReq req) {
+        var category = categoryRepository.findById(req.getId());
+        if (category.isPresent()) {
+            category.get().setUpdate(req);
+            category.get().setStatus(Constants.DELETE_STATUS);
+            categoryRepository.save(category.get());
         }
     }
 
     @Override
-    public void delete(Category req) {
-        Optional<Category> find = categoryRepository.findById(req.getId());
-        if (find.isEmpty()) {
-            req.setStatus(Constants.DELETE_STATUS);
-            categoryRepository.save(req);
+    public void update(CategoryUpdateReq req) {
+        var category = categoryRepository.findById(req.getId());
+        if (category.isPresent()) {
+            category.get().setUpdate(req);
+            categoryRepository.save(category.get());
         }
     }
 
     @Override
-    public void update(Category req) {
-        Optional<Category> find = categoryRepository.findById(req.getId());
-        if (find.isPresent()) {
-            categoryRepository.save(req);
-        }
-    }
-
-    @Override
-    public CategoryRes findById(Long id) {
+    public CategoryRes findById(Integer id) {
         CategoryRes res = new CategoryRes();
-        Optional<Category> find = categoryRepository.findById(id);
-        if(find.isPresent()){
-            res.setData(find.get());
+        var category = categoryRepository.findById(id);
+        if (category.isPresent()) {
+            res.setDataRes(category.get());
             return res;
         }
         return null;

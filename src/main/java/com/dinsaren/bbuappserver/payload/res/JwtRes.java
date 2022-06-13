@@ -1,4 +1,4 @@
-package com.dinsaren.bbuappserver.payload.response;
+package com.dinsaren.bbuappserver.payload.res;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ public class JwtRes {
 	private String refreshToken;
 	private Long id;
 	private String username;
-	private String email;
-	private List<String> roles;
+    private String email;
+    private final List<String> roles;
 
 	public JwtRes(String accessToken, String refreshToken, Long id, String username, String email, List<String> roles) {
 		this.token = accessToken;

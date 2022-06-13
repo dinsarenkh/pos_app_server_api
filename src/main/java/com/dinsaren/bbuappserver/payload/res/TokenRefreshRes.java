@@ -1,4 +1,4 @@
-package com.dinsaren.bbuappserver.payload.response;
+package com.dinsaren.bbuappserver.payload.res;
 
 public class TokenRefreshRes {
   private String accessToken;

@@ -1,6 +1,4 @@
-package com.dinsaren.bbuappserver.payload.request;
-
-import java.util.Set;
+package com.dinsaren.bbuappserver.payload.req;
 
 public class RegisterReq {
     private String username;

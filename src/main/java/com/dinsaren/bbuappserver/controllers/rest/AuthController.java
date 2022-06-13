@@ -6,13 +6,13 @@ import com.dinsaren.bbuappserver.models.RefreshToken;
 import com.dinsaren.bbuappserver.models.Role;
 import com.dinsaren.bbuappserver.models.User;
 import com.dinsaren.bbuappserver.models.UserRole;
-import com.dinsaren.bbuappserver.payload.request.LogOutReq;
-import com.dinsaren.bbuappserver.payload.request.LoginReq;
-import com.dinsaren.bbuappserver.payload.request.RegisterReq;
-import com.dinsaren.bbuappserver.payload.request.TokenRefreshReq;
-import com.dinsaren.bbuappserver.payload.response.JwtRes;
-import com.dinsaren.bbuappserver.payload.response.MessageRes;
-import com.dinsaren.bbuappserver.payload.response.TokenRefreshRes;
+import com.dinsaren.bbuappserver.payload.req.LogOutReq;
+import com.dinsaren.bbuappserver.payload.req.LoginReq;
+import com.dinsaren.bbuappserver.payload.req.RegisterReq;
+import com.dinsaren.bbuappserver.payload.req.TokenRefreshReq;
+import com.dinsaren.bbuappserver.payload.res.JwtRes;
+import com.dinsaren.bbuappserver.payload.res.MessageRes;
+import com.dinsaren.bbuappserver.payload.res.TokenRefreshRes;
 import com.dinsaren.bbuappserver.repository.RoleRepository;
 import com.dinsaren.bbuappserver.repository.UserRepository;
 import com.dinsaren.bbuappserver.security.jwt.JwtUtils;
@@ -36,6 +36,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/oauth")
 public class AuthController {
+    private MessageRes resMessage;
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -56,7 +57,7 @@ public class AuthController {
 
     @PostMapping("/token")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginReq req) {
-
+        resMessage = new MessageRes();
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(req.getPhone(), req.getPassword()));
 
@@ -70,65 +71,47 @@ public class AuthController {
                 .collect(Collectors.toList());
 
         RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId());
-
-        return ResponseEntity.ok(new JwtRes(jwt, refreshToken.getToken(), userDetails.getId(),
+        resMessage.setGetDateMessageSuccess(new JwtRes(jwt, refreshToken.getToken(), userDetails.getId(),
                 userDetails.getUsername(), userDetails.getEmail(), roles));
+        return ResponseEntity.ok(resMessage);
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterReq req) {
+
         if (userRepository.existsByUsername(req.getUsername())) {
-            return ResponseEntity.badRequest().body(new MessageRes("Error: Username is already taken!",null));
+            resMessage = new MessageRes();
+            resMessage.setGetDateMessageSuccess("Error: Username is already taken!");
+            return ResponseEntity.badRequest().body(new MessageRes());
         }
 
         if (userRepository.existsByEmail(req.getEmail())) {
-            return ResponseEntity.badRequest().body(new MessageRes("Error: Email is already in use!",null));
+            resMessage = new MessageRes();
+            resMessage.setGetDateMessageSuccess("Error: Email is already in use!");
+            return ResponseEntity.badRequest().body(new MessageRes());
         }
 
         if (userRepository.existsByPhone(req.getPhone())) {
-            return ResponseEntity.badRequest().body(new MessageRes("Error: Phone is already in use!",null));
+            resMessage = new MessageRes();
+            resMessage.setGetDateMessageSuccess("Error: Phone is already in use!");
+            return ResponseEntity.badRequest().body(new MessageRes());
         }
 
-
-        // Create new user's account
         User user = new User(req.getUsername(), req.getEmail(),
                 encoder.encode(req.getPassword()), req.getPhone());
 
-//        Set<String> strRoles = req.getRole();
         Set<Role> roles = new HashSet<>();
-//
-//        if (strRoles == null) {
+
         Role userRole = roleRepository.findByName(UserRole.ROLE_USER)
                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
         roles.add(userRole);
-//        } else {
-//            strRoles.forEach(role -> {
-//                switch (role) {
-//                    case "admin":
-//                        Role adminRole = roleRepository.findByName(UserRole.ROLE_ADMIN)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(adminRole);
-//
-//                        break;
-//                    case "mod":
-//                        Role modRole = roleRepository.findByName(UserRole.ROLE_MODERATOR)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(modRole);
-//
-//                        break;
-//                    default:
-//                        Role userRole = roleRepository.findByName(UserRole.ROLE_USER)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(userRole);
-//                }
-//            });
-//        }
 
         user.setRoles(roles);
         user.setStatus(Constants.ACTIVE_STATUS);
         userRepository.save(user);
-
-        return ResponseEntity.ok(new MessageRes("User registered successfully!",null));
+        resMessage = new MessageRes();
+        resMessage.setGetDateMessageSuccess("User registered successfully!");
+        return ResponseEntity.ok(new MessageRes());
     }
 
     @PostMapping("/refresh")
@@ -149,7 +132,9 @@ public class AuthController {
     @PostMapping("/logout")
     public ResponseEntity<?> logoutUser(@RequestBody LogOutReq req) {
         refreshTokenService.deleteByUserId(req.getUserId());
-        return ResponseEntity.ok(new MessageRes("Log out successful!",null));
+        resMessage = new MessageRes();
+        resMessage.setGetDateMessageSuccess("Log out successful!");
+        return ResponseEntity.ok(new MessageRes());
     }
 
 }

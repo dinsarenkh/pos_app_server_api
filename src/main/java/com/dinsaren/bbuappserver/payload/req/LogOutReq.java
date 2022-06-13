@@ -1,4 +1,4 @@
-package com.dinsaren.bbuappserver.payload.request;
+package com.dinsaren.bbuappserver.payload.req;
 
 public class LogOutReq {
   private Long userId;

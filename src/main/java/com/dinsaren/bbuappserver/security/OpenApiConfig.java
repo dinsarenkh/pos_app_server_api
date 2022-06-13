@@ -14,13 +14,13 @@ public class OpenApiConfig {
 	public OpenAPI openApi() {
 		return new OpenAPI()
 				.info(new Info()
-						.title("BBU API")
-						.description("BBU Server for mobile")
+                        .title("POS Server APIs")
+                        .description("POS Server for mobile")
 						.version("v1.0")
 						.contact(new Contact()
-								.name("Arun")
-								.url("https://asbnotebook.com")
-								.email("asbnotebook@gmail.com"))
+                                .name("Arun")
+                                .url("https://dinsarenkh.com")
+                                .email("dinsarenkh@gmail.com"))
 						.termsOfService("TOC")
 						.license(new License().name("License").url("#"))
 					 );
