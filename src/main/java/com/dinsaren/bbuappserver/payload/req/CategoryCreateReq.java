@@ -14,5 +14,6 @@ public class CategoryCreateReq {
     private String nameKh;
     private String imageUrl;
     private Integer parentId = Constants.NUMBER_ZERO;
+    private Integer merchantId;
 
 }

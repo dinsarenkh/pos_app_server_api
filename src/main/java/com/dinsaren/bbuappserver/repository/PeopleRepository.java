@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface PeopleRepository extends CrudRepository<People, Integer> {
     List<People> findAllByStatus(String status);
     List<People> findAllByTypeAndStatus(String type, String status);
-
+    Integer countByMerchantIdAndStatus(Integer merchantId, String status);
 }

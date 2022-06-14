@@ -25,6 +25,8 @@ public class People extends BaseEntity {
 	private String address;
 	@Column(name = "type")
 	private String type;
+	@Column(name = "merchant_id")
+	private Integer merchantId;
 	private String status = Constants.ACTIVE_STATUS;
 
 	public void setDataCreate(PeopleReq data){
@@ -34,6 +36,7 @@ public class People extends BaseEntity {
 		this.email=data.getEmail();
 		this.address=data.getAddress();
 		this.type=data.getType();
+		this.merchantId=data.getMerchantId();
 		this.status=Constants.ACTIVE_STATUS;
 		this.setCreateAt(new Date());
 		this.setCreateBy(Constants.APP);
@@ -50,6 +53,7 @@ public class People extends BaseEntity {
 		this.status=Constants.ACTIVE_STATUS;
 		this.setUpdateAt(new Date());
 		this.setUpdateBy(Constants.APP);
+		this.merchantId=data.getMerchantId();
 	}
 
 

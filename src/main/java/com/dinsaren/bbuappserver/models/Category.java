@@ -25,6 +25,8 @@ public class Category extends BaseEntity {
     private String imageUrl;
     @Column(name = "parent_id")
     private Integer parentId = Constants.NUMBER_ZERO;
+    @Column(name = "merchant_id")
+    private Integer merchantId;
     private String status = Constants.ACTIVE_STATUS;
 
     public void setCreate(CategoryCreateReq data) {

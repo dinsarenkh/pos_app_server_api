@@ -15,4 +15,5 @@ public interface UnitTypeService {
     void delete(UnitTypeUpdateReq req);
     void update(UnitTypeUpdateReq req);
     UnitTypeRes findById(Integer id);
+    Integer countByMerchantIdAndStatus(Integer merchantId);
 }

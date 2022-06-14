@@ -5,11 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "pos_users",
-        uniqueConstraints = {
-                @UniqueConstraint(columnNames = "username"),
-                @UniqueConstraint(columnNames = "email")
-        })
+@Table(name = "pos_users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +14,13 @@ public class User {
     private String email;
     private String phone;
     private String password;
-
+	private String profile;
+	@Column(name = "national_id")
+	private String nationalId;
+	@Column(name = "national_image")
+	private String nationalImage;
+	@Column(name = "address")
+	private String address;
     private String status;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -91,5 +93,37 @@ public class User {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	public String getNationalId() {
+		return nationalId;
+	}
+
+	public void setNationalId(String nationalId) {
+		this.nationalId = nationalId;
+	}
+
+	public String getNationalImage() {
+		return nationalImage;
+	}
+
+	public void setNationalImage(String nationalImage) {
+		this.nationalImage = nationalImage;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }

@@ -13,6 +13,8 @@ public class PeopleReq {
 	private String email;
 	private String address;
 	private String type;
+	private Integer merchantId;
 	private String status = Constants.ACTIVE_STATUS;
+
 
 }

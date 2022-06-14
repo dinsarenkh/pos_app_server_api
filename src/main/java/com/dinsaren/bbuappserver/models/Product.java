@@ -38,6 +38,8 @@ public class Product extends BaseEntity {
     private String note;
     @Column(name = "category_id")
     private int categoryId;
+    @Column(name = "merchant_id")
+    private Integer merchantId;
     private String status;
 
     public void setCreate(ProductCreateReq data) {
@@ -53,6 +55,7 @@ public class Product extends BaseEntity {
         this.note = data.getNote();
         this.categoryId = data.getCategoryId();
         this.status = Constants.ACTIVE_STATUS;
+        this.merchantId=data.getMerchantId();
         this.setCreateAt(new Date());
         this.setCreateBy(Constants.APP);
     }
@@ -71,6 +74,7 @@ public class Product extends BaseEntity {
         this.note = data.getNote();
         this.categoryId = data.getCategoryId();
         this.status = Constants.ACTIVE_STATUS;
+        this.merchantId=data.getMerchantId();
         this.setUpdateAt(new Date());
         this.setUpdateBy(Constants.APP);
     }

@@ -12,5 +12,6 @@ public class UnitTypeUpdateReq {
     private String nameKh;
     private String imageUrl;
     private Integer qty;
+    private Integer merchantId;
     
 }

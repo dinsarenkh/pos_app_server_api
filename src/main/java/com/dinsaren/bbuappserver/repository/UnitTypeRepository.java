@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface UnitTypeRepository extends CrudRepository<UnitType, Integer> {
     List<UnitType> findAllByStatus(String status);
+    Integer countByMerchantIdAndStatus(Integer merchantId, String status);
 }

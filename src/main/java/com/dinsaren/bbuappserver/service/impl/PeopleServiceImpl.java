@@ -76,4 +76,11 @@ public class PeopleServiceImpl implements PeopleService {
         }
         return null;
     }
+
+    @Override
+    public Integer countByMerchantIdAndStatus(Integer merchantId) {
+        return peopleRepository.countByMerchantIdAndStatus(merchantId, Constants.ACTIVE_STATUS);
+    }
+
+
 }

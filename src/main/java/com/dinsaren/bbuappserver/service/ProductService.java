@@ -8,14 +8,10 @@ import java.util.List;
 
 public interface ProductService {
     List<ProductRes> findAll();
-
     List<ProductRes> findAllByCategoryId(Integer id);
-
     void create(ProductCreateReq req);
-
     void delete(ProductUpdateReq req);
-
     void update(ProductUpdateReq req);
-
     ProductRes findById(Integer id);
+    Integer countByMerchantIdAndStatus(Integer merchantId);
 }

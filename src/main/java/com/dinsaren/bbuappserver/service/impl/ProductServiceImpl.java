@@ -84,4 +84,10 @@ public class ProductServiceImpl implements ProductService {
         }
         return null;
     }
+
+    @Override
+    public Integer countByMerchantIdAndStatus(Integer merchantId) {
+        return productRepository.countByMerchantIdAndStatus(merchantId, Constants.ACTIVE_STATUS);
+    }
+
 }

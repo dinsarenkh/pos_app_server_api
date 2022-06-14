@@ -1,25 +1,22 @@
 package com.dinsaren.bbuappserver.models;
 
 import com.dinsaren.bbuappserver.constants.Constants;
-import com.dinsaren.bbuappserver.payload.req.MerchantReq;
-import com.dinsaren.bbuappserver.payload.res.MerchantRes;
+import com.dinsaren.bbuappserver.payload.req.OutletReq;
 import com.dinsaren.bbuappserver.utils.BaseEntity;
 import java.math.BigDecimal;
 import javax.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "pos_merchants")
+@Table(name = "pos_outlet")
 @Data
-public class Merchant extends BaseEntity {
+public class Outlet extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String code;
-    @Column(name = "holder_id")
-    private Integer holderId;
-    @Column(name = "category_key")
-    private String categoryKey;
+    @Column(name = "merchant_id")
+    private Integer merchantId;
     @Column(name = "name_en")
     private String nameEn;
     @Column(name = "name_kh")
@@ -36,9 +33,8 @@ public class Merchant extends BaseEntity {
     private BigDecimal lateAddress;
     private String status = Constants.ACTIVE_STATUS;
 
-    public void setCreate(MerchantReq data){
-        this.holderId=data.getHolderId();
-        this.categoryKey=data.getCategoryKey();
+    public void setCreate(OutletReq data){
+        this.code=data.getCode();
         this.nameEn=data.getNameEn();
         this.nameKh=data.getNameKh();
         this.imageUrl=data.getImageUrl();
@@ -46,12 +42,16 @@ public class Merchant extends BaseEntity {
         this.status=data.getStatus();
         this.lateAddress=data.getLateAddress();
         this.longAddress=data.getLongAddress();
+        this.addressDes=data.getAddressDes();
+        this.setCreateAt(data.getCreateAt());
+        this.setCreateBy(data.getCreateBy());
+        this.setUpdateAt(data.getUpdateAt());
+        this.setUpdateBy(data.getUpdateBy());
     }
-
-    public void setUpdate(MerchantReq data){
+    
+    public void setUpdate(OutletReq data){
         this.id=data.getId();
-        this.holderId=data.getHolderId();
-        this.categoryKey=data.getCategoryKey();
+        this.code=data.getCode();
         this.nameEn=data.getNameEn();
         this.nameKh=data.getNameKh();
         this.imageUrl=data.getImageUrl();
@@ -59,7 +59,11 @@ public class Merchant extends BaseEntity {
         this.status=data.getStatus();
         this.lateAddress=data.getLateAddress();
         this.longAddress=data.getLongAddress();
+        this.addressDes=data.getAddressDes();
+        this.setCreateAt(data.getCreateAt());
+        this.setCreateBy(data.getCreateBy());
+        this.setUpdateAt(data.getUpdateAt());
+        this.setUpdateBy(data.getUpdateBy());
     }
-
 
 }

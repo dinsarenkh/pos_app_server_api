@@ -73,4 +73,9 @@ public class UnitTypeServiceImpl implements UnitTypeService {
         }
         return null;
     }
+
+    @Override
+    public Integer countByMerchantIdAndStatus(Integer merchantId) {
+        return unitTypeRepository.countByMerchantIdAndStatus(merchantId, Constants.ACTIVE_STATUS);
+    }
 }

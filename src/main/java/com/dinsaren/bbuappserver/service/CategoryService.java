@@ -16,4 +16,6 @@ public interface CategoryService {
     void update(CategoryUpdateReq req);
 
     CategoryRes findById(Integer id);
+
+    Integer countCategoryByMerchantId(Integer merchantId);
 }

@@ -29,6 +29,8 @@ public class Order extends BaseEntity {
     @Column(name = "amount")
     private BigDecimal 	amount;
     private String status;
+    @Column(name = "outlet_id")
+    private Integer outletId;
 
     public void setCreate(OrderCreateReq data){
         this.customerId = data.getCustomerId();

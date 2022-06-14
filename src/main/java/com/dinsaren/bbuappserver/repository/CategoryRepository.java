@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CategoryRepository extends CrudRepository<Category, Integer> {
     List<Category> findAllByStatus(String status);
+    Integer countByMerchantIdAndStatus(Integer merchantId, String status);
 }

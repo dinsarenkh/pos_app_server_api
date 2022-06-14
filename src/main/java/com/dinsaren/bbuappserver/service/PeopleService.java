@@ -14,4 +14,6 @@ public interface PeopleService {
     void delete(PeopleReq req);
     void update(PeopleReq req);
     PeopleRes findById(Integer id);
+    Integer countByMerchantIdAndStatus(Integer merchantId);
+
 }

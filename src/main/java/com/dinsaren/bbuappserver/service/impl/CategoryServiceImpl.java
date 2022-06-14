@@ -67,4 +67,10 @@ public class CategoryServiceImpl implements CategoryService {
         }
         return null;
     }
+
+    @Override
+    public Integer countCategoryByMerchantId(Integer merchantId) {
+        return categoryRepository.countByMerchantIdAndStatus(merchantId, Constants.ACTIVE_STATUS);
+    }
+
 }

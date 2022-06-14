@@ -26,6 +26,8 @@ public class UnitType extends BaseEntity {
     private String imageUrl;
     @Column(name = "qty")
     private Integer qty;
+    @Column(name = "merchant_id")
+    private Integer merchantId;
     private String status = Constants.ACTIVE_STATUS;
 
     public void setCreate(UnitTypeCreateReq data){
@@ -35,6 +37,7 @@ public class UnitType extends BaseEntity {
         this.imageUrl = data.getImageUrl();
         this.status = Constants.ACTIVE_STATUS;
         this.qty = data.getQty();
+        this.merchantId=data.getMerchantId();
         this.setCreateAt(new Date());
         this.setCreateBy(Constants.APP);
     }
@@ -47,6 +50,7 @@ public class UnitType extends BaseEntity {
         this.imageUrl = data.getImageUrl();
         this.status = Constants.ACTIVE_STATUS;
         this.qty = data.getQty();
+        this.merchantId=data.getMerchantId();
         this.setUpdateAt(new Date());
         this.setUpdateBy(Constants.APP);
     }

@@ -16,4 +16,5 @@ public class ProductCreateReq {
     private Double 	qtyAlert;
     private String note;
     private int categoryId;
+    private Integer merchantId;
 }

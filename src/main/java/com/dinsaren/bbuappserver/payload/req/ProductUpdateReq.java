@@ -16,5 +16,6 @@ public class ProductUpdateReq {
     private Double 	qtyAlert;
     private String note;
     private int categoryId;
+    private Integer merchantId;
 
 }
