@@ -78,23 +78,24 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterReq req) {
-
+        resMessage = new MessageRes();
+        if(req.getPassword().equals(req.getConfirmPassword())){
+            resMessage.setGetDateMessageSuccess("Error: Confirm Password not match!");
+            return ResponseEntity.badRequest().body(resMessage);
+        }
         if (userRepository.existsByUsername(req.getUsername())) {
-            resMessage = new MessageRes();
             resMessage.setGetDateMessageSuccess("Error: Username is already taken!");
-            return ResponseEntity.badRequest().body(new MessageRes());
+            return ResponseEntity.badRequest().body(resMessage);
         }
 
         if (userRepository.existsByEmail(req.getEmail())) {
-            resMessage = new MessageRes();
             resMessage.setGetDateMessageSuccess("Error: Email is already in use!");
-            return ResponseEntity.badRequest().body(new MessageRes());
+            return ResponseEntity.badRequest().body(resMessage);
         }
 
         if (userRepository.existsByPhone(req.getPhone())) {
-            resMessage = new MessageRes();
             resMessage.setGetDateMessageSuccess("Error: Phone is already in use!");
-            return ResponseEntity.badRequest().body(new MessageRes());
+            return ResponseEntity.badRequest().body(resMessage);
         }
 
         User user = new User(req.getUsername(), req.getEmail(),
@@ -116,7 +117,7 @@ public class AuthController {
         userRepository.save(user);
         resMessage = new MessageRes();
         resMessage.setGetDateMessageSuccess("User registered successfully!");
-        return ResponseEntity.ok(new MessageRes());
+        return ResponseEntity.ok(resMessage);
     }
 
     @PostMapping("/refresh")
@@ -135,11 +136,11 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<?> logoutUser(@RequestBody LogOutReq req) {
+    public ResponseEntity<Object> logoutUser(@RequestBody LogOutReq req) {
         refreshTokenService.deleteByUserId(req.getUserId());
         resMessage = new MessageRes();
         resMessage.setGetDateMessageSuccess("Log out successful!");
-        return ResponseEntity.ok(new MessageRes());
+        return ResponseEntity.ok(resMessage);
     }
 
 }
