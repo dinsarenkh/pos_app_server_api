@@ -2,16 +2,10 @@ package com.dinsaren.bbuappserver.service.impl;
 
 import com.dinsaren.bbuappserver.constants.Constants;
 import com.dinsaren.bbuappserver.models.Outlet;
-import com.dinsaren.bbuappserver.models.UnitType;
 import com.dinsaren.bbuappserver.payload.req.OutletReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeCreateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeUpdateReq;
 import com.dinsaren.bbuappserver.payload.res.OutletRes;
-import com.dinsaren.bbuappserver.payload.res.UnitTypeRes;
 import com.dinsaren.bbuappserver.repository.OutletRepository;
-import com.dinsaren.bbuappserver.repository.UnitTypeRepository;
 import com.dinsaren.bbuappserver.service.OutletService;
-import com.dinsaren.bbuappserver.service.UnitTypeService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,6 @@
 package com.dinsaren.bbuappserver.controllers.rest;
 
-import com.dinsaren.bbuappserver.payload.req.CategoryCreateReq;
-import com.dinsaren.bbuappserver.payload.req.CategoryUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.CategoryReq;
 import com.dinsaren.bbuappserver.payload.res.CategoryRes;
 import com.dinsaren.bbuappserver.payload.res.MessageRes;
 import com.dinsaren.bbuappserver.service.CategoryService;
@@ -56,7 +55,8 @@ public class CategoryController {
     }
 
     @PostMapping("/category/create")
-    public ResponseEntity<Object> create(@RequestBody CategoryCreateReq req) {
+    public ResponseEntity<Object> create(@RequestBody
+												 CategoryReq req) {
         log.info("Intercept create category {} ", req);
         try {
             categoryService.create(req);
@@ -72,7 +72,7 @@ public class CategoryController {
     }
 
     @PostMapping("/category/update")
-    public ResponseEntity<Object> update(@RequestBody CategoryUpdateReq req) {
+    public ResponseEntity<Object> update(@RequestBody CategoryReq req) {
         log.info("Intercept update category {} ", req);
         try {
             categoryService.update(req);
@@ -88,7 +88,7 @@ public class CategoryController {
     }
 
     @PostMapping("/category/delete")
-    public ResponseEntity<Object> delete(@RequestBody CategoryUpdateReq req) {
+    public ResponseEntity<Object> delete(@RequestBody CategoryReq req) {
         log.info("Intercept delete category {} ", req);
         try {
             categoryService.update(req);

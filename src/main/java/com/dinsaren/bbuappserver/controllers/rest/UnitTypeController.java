@@ -1,7 +1,6 @@
 package com.dinsaren.bbuappserver.controllers.rest;
 
 import com.dinsaren.bbuappserver.payload.req.UnitTypeCreateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeUpdateReq;
 import com.dinsaren.bbuappserver.payload.res.MessageRes;
 import com.dinsaren.bbuappserver.payload.res.UnitTypeRes;
 import com.dinsaren.bbuappserver.service.UnitTypeService;
@@ -72,7 +71,7 @@ public class UnitTypeController {
     }
 
     @PostMapping("/unit/update")
-    public ResponseEntity<Object> update(@RequestBody UnitTypeUpdateReq req) {
+    public ResponseEntity<Object> update(@RequestBody UnitTypeCreateReq req) {
         log.info("Intercept update unit {} ", req);
         try {
             unitTypeService.update(req);
@@ -88,7 +87,7 @@ public class UnitTypeController {
     }
 
     @PostMapping("/unit/delete")
-    public ResponseEntity<Object> delete(@RequestBody UnitTypeUpdateReq req) {
+    public ResponseEntity<Object> delete(@RequestBody UnitTypeCreateReq req) {
         log.info("Intercept delete unit {} ", req);
         try {
             unitTypeService.update(req);

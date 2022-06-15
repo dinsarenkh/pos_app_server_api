@@ -15,6 +15,7 @@ public class CategoryRes extends BaseEntityRes {
     private Integer parentId = Constants.NUMBER_ZERO;
     private String status = Constants.ACTIVE_STATUS;
     private Integer merchantId;
+    private String type;
 
     public void setDataRes(Category data) {
         this.id = data.getId();
@@ -25,6 +26,7 @@ public class CategoryRes extends BaseEntityRes {
         this.parentId = data.getParentId();
         this.status = data.getStatus();
         this.merchantId=data.getMerchantId();
+        this.type=data.getType();
         this.setCreateAt(data.getCreateAt());
         this.setCreateBy(data.getCreateBy());
         this.setUpdateAt(data.getUpdateAt());

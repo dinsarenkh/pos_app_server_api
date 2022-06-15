@@ -1,10 +1,7 @@
 package com.dinsaren.bbuappserver.service;
 
 import com.dinsaren.bbuappserver.payload.req.PeopleReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeCreateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeUpdateReq;
 import com.dinsaren.bbuappserver.payload.res.PeopleRes;
-import com.dinsaren.bbuappserver.payload.res.UnitTypeRes;
 import java.util.List;
 
 public interface PeopleService {

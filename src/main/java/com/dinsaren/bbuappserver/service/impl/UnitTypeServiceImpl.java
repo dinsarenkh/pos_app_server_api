@@ -1,17 +1,10 @@
 package com.dinsaren.bbuappserver.service.impl;
 
 import com.dinsaren.bbuappserver.constants.Constants;
-import com.dinsaren.bbuappserver.models.Category;
 import com.dinsaren.bbuappserver.models.UnitType;
-import com.dinsaren.bbuappserver.payload.req.CategoryCreateReq;
-import com.dinsaren.bbuappserver.payload.req.CategoryUpdateReq;
 import com.dinsaren.bbuappserver.payload.req.UnitTypeCreateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeUpdateReq;
-import com.dinsaren.bbuappserver.payload.res.CategoryRes;
 import com.dinsaren.bbuappserver.payload.res.UnitTypeRes;
-import com.dinsaren.bbuappserver.repository.CategoryRepository;
 import com.dinsaren.bbuappserver.repository.UnitTypeRepository;
-import com.dinsaren.bbuappserver.service.CategoryService;
 import com.dinsaren.bbuappserver.service.UnitTypeService;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +38,7 @@ public class UnitTypeServiceImpl implements UnitTypeService {
     }
 
     @Override
-    public void delete(UnitTypeUpdateReq req) {
+    public void delete(UnitTypeCreateReq req) {
         var find = unitTypeRepository.findById(req.getId());
         if(find.isPresent()){
             find.get().setUpdate(req);
@@ -55,7 +48,7 @@ public class UnitTypeServiceImpl implements UnitTypeService {
     }
 
     @Override
-    public void update(UnitTypeUpdateReq req) {
+    public void update(UnitTypeCreateReq req) {
         var find = unitTypeRepository.findById(req.getId());
         if(find.isPresent()){
             find.get().setUpdate(req);

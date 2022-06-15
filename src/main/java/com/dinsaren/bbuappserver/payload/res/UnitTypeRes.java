@@ -16,6 +16,7 @@ public class UnitTypeRes extends BaseEntityRes {
     private String imageUrl;
     private Integer qty;
     private String status;
+    private String type;
 
     public void setDateRes(UnitType data){
         this.id =data.getId();
@@ -25,6 +26,7 @@ public class UnitTypeRes extends BaseEntityRes {
         this.imageUrl = data.getImageUrl();
         this.status = data.getStatus();
         this.qty = data.getQty();
+        this.type=data.getType();
         this.setCreateAt(data.getCreateAt());
         this.setCreateBy(data.getCreateBy());
         this.setUpdateAt(data.getUpdateAt());

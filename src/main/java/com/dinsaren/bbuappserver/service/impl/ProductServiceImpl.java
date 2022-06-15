@@ -2,8 +2,7 @@ package com.dinsaren.bbuappserver.service.impl;
 
 import com.dinsaren.bbuappserver.constants.Constants;
 import com.dinsaren.bbuappserver.models.Product;
-import com.dinsaren.bbuappserver.payload.req.ProductCreateReq;
-import com.dinsaren.bbuappserver.payload.req.ProductUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.ProductReq;
 import com.dinsaren.bbuappserver.payload.res.ProductRes;
 import com.dinsaren.bbuappserver.repository.ProductRepository;
 import com.dinsaren.bbuappserver.service.CategoryService;
@@ -48,14 +47,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void create(ProductCreateReq req) {
+    public void create(ProductReq req) {
         Product create = new Product();
         create.setCreate(req);
         productRepository.save(create);
     }
 
     @Override
-    public void delete(ProductUpdateReq req) {
+    public void delete(ProductReq req) {
         var find = productRepository.findById(req.getId());
         if (find.isPresent()) {
             find.get().setUpdate(req);
@@ -65,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(ProductUpdateReq req) {
+    public void update(ProductReq req) {
         var find = productRepository.findById(req.getId());
         if (find.isPresent()) {
             find.get().setUpdate(req);

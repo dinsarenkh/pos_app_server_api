@@ -13,5 +13,5 @@ public class UnitTypeCreateReq{
     private String imageUrl;
     private Integer qty;
     private Integer merchantId;
-
+    private String type;
 }

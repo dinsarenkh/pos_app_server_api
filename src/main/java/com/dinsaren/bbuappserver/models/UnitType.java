@@ -2,12 +2,10 @@ package com.dinsaren.bbuappserver.models;
 
 import com.dinsaren.bbuappserver.constants.Constants;
 import com.dinsaren.bbuappserver.payload.req.UnitTypeCreateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeUpdateReq;
 import com.dinsaren.bbuappserver.utils.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.util.Date;
 
 @Entity
@@ -29,7 +27,7 @@ public class UnitType extends BaseEntity {
     @Column(name = "merchant_id")
     private Integer merchantId;
     private String status = Constants.ACTIVE_STATUS;
-
+    private String type;
     public void setCreate(UnitTypeCreateReq data){
         this.code = data.getCode();
         this.nameEn = data.getNameEn();
@@ -40,9 +38,10 @@ public class UnitType extends BaseEntity {
         this.merchantId=data.getMerchantId();
         this.setCreateAt(new Date());
         this.setCreateBy(Constants.APP);
+        this.type = data.getType();
     }
 
-    public void setUpdate(UnitTypeUpdateReq data){
+    public void setUpdate(UnitTypeCreateReq data){
         this.id = data.getId();
         this.code = data.getCode();
         this.nameEn = data.getNameEn();

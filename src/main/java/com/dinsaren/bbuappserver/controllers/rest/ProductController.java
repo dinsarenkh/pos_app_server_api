@@ -1,7 +1,6 @@
 package com.dinsaren.bbuappserver.controllers.rest;
 
-import com.dinsaren.bbuappserver.payload.req.ProductCreateReq;
-import com.dinsaren.bbuappserver.payload.req.ProductUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.ProductReq;
 import com.dinsaren.bbuappserver.payload.res.MessageRes;
 import com.dinsaren.bbuappserver.payload.res.ProductRes;
 import com.dinsaren.bbuappserver.service.ProductService;
@@ -56,7 +55,8 @@ public class ProductController {
     }
 
     @PostMapping("/product/create")
-    public ResponseEntity<Object> create(@RequestBody ProductCreateReq req) {
+    public ResponseEntity<Object> create(@RequestBody
+												 ProductReq req) {
         log.info("Intercept create product {} ", req);
         try {
             productService.create(req);
@@ -72,7 +72,7 @@ public class ProductController {
     }
 
     @PostMapping("/product/update")
-    public ResponseEntity<Object> update(@RequestBody ProductUpdateReq req) {
+    public ResponseEntity<Object> update(@RequestBody ProductReq req) {
         log.info("Intercept update product {} ", req);
         try {
             productService.update(req);
@@ -88,7 +88,7 @@ public class ProductController {
     }
 
     @PostMapping("/product/delete")
-    public ResponseEntity<Object> delete(@RequestBody ProductUpdateReq req) {
+    public ResponseEntity<Object> delete(@RequestBody ProductReq req) {
         log.info("Intercept delete product {} ", req);
         try {
             productService.update(req);

@@ -7,7 +7,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-public class CategoryCreateReq {
+public class CategoryReq {
     private int id;
     private String code;
     private String nameEn;
@@ -15,5 +15,6 @@ public class CategoryCreateReq {
     private String imageUrl;
     private Integer parentId = Constants.NUMBER_ZERO;
     private Integer merchantId;
+    private String type;
 
 }

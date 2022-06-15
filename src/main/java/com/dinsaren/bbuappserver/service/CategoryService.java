@@ -1,7 +1,6 @@
 package com.dinsaren.bbuappserver.service;
 
-import com.dinsaren.bbuappserver.payload.req.CategoryCreateReq;
-import com.dinsaren.bbuappserver.payload.req.CategoryUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.CategoryReq;
 import com.dinsaren.bbuappserver.payload.res.CategoryRes;
 
 import java.util.List;
@@ -9,11 +8,11 @@ import java.util.List;
 public interface CategoryService {
     List<CategoryRes> findAll();
 
-    void create(CategoryCreateReq req);
+    void create(CategoryReq req);
 
-    void delete(CategoryUpdateReq req);
+    void delete(CategoryReq req);
 
-    void update(CategoryUpdateReq req);
+    void update(CategoryReq req);
 
     CategoryRes findById(Integer id);
 

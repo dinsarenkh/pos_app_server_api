@@ -1,13 +1,8 @@
 package com.dinsaren.bbuappserver.controllers.rest;
 
-import com.dinsaren.bbuappserver.payload.req.ProductCreateReq;
-import com.dinsaren.bbuappserver.payload.req.ProductUnitCreateReq;
-import com.dinsaren.bbuappserver.payload.req.ProductUnitUpdateReq;
-import com.dinsaren.bbuappserver.payload.req.ProductUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.ProductUnitReq;
 import com.dinsaren.bbuappserver.payload.res.MessageRes;
-import com.dinsaren.bbuappserver.payload.res.ProductRes;
 import com.dinsaren.bbuappserver.payload.res.ProductUnitRes;
-import com.dinsaren.bbuappserver.service.ProductService;
 import com.dinsaren.bbuappserver.service.ProductUnitService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -77,7 +72,7 @@ public class ProductUnitController {
     }
 
     @PostMapping("/product/unit/create")
-    public ResponseEntity<Object> create(@RequestBody ProductUnitCreateReq req) {
+    public ResponseEntity<Object> create(@RequestBody ProductUnitReq req) {
         log.info("Intercept create product unit {} ", req);
         try {
             productUnitService.create(req);
@@ -93,7 +88,7 @@ public class ProductUnitController {
     }
 
     @PostMapping("/product/unit/update")
-    public ResponseEntity<Object> update(@RequestBody ProductUnitUpdateReq req) {
+    public ResponseEntity<Object> update(@RequestBody ProductUnitReq req) {
         log.info("Intercept update product unit {} ", req);
         try {
             productUnitService.update(req);
@@ -109,7 +104,7 @@ public class ProductUnitController {
     }
 
     @PostMapping("/product/unit/delete")
-    public ResponseEntity<Object> delete(@RequestBody ProductUnitUpdateReq req) {
+    public ResponseEntity<Object> delete(@RequestBody ProductUnitReq req) {
         log.info("Intercept delete product unit {} ", req);
         try {
             productUnitService.update(req);

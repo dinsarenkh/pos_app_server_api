@@ -2,13 +2,8 @@ package com.dinsaren.bbuappserver.service.impl;
 
 import com.dinsaren.bbuappserver.constants.Constants;
 import com.dinsaren.bbuappserver.models.ProductUnit;
-import com.dinsaren.bbuappserver.models.UnitType;
-import com.dinsaren.bbuappserver.payload.req.ProductUnitCreateReq;
-import com.dinsaren.bbuappserver.payload.req.ProductUnitUpdateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeCreateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.ProductUnitReq;
 import com.dinsaren.bbuappserver.payload.res.ProductUnitRes;
-import com.dinsaren.bbuappserver.payload.res.UnitTypeRes;
 import com.dinsaren.bbuappserver.repository.ProductUnitRepository;
 import com.dinsaren.bbuappserver.service.ProductService;
 import com.dinsaren.bbuappserver.service.ProductUnitService;
@@ -57,14 +52,14 @@ public class ProductUnitServiceImpl implements ProductUnitService {
     }
 
     @Override
-    public void create(ProductUnitCreateReq req) {
+    public void create(ProductUnitReq req) {
         ProductUnit create = new ProductUnit();
         create.setCreate(req);
         productUnitRepository.save(create);
     }
 
     @Override
-    public void delete(ProductUnitUpdateReq req) {
+    public void delete(ProductUnitReq req) {
         var find = productUnitRepository.findById(req.getId());
         if(find.isPresent()){
             find.get().setUpdate(req);
@@ -74,7 +69,7 @@ public class ProductUnitServiceImpl implements ProductUnitService {
     }
 
     @Override
-    public void update(ProductUnitUpdateReq req) {
+    public void update(ProductUnitReq req) {
         var find = productUnitRepository.findById(req.getId());
         if(find.isPresent()){
             find.get().setUpdate(req);

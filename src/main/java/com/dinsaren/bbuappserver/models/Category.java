@@ -1,8 +1,7 @@
 package com.dinsaren.bbuappserver.models;
 
 import com.dinsaren.bbuappserver.constants.Constants;
-import com.dinsaren.bbuappserver.payload.req.CategoryCreateReq;
-import com.dinsaren.bbuappserver.payload.req.CategoryUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.CategoryReq;
 import com.dinsaren.bbuappserver.utils.BaseEntity;
 import lombok.Data;
 
@@ -28,8 +27,9 @@ public class Category extends BaseEntity {
     @Column(name = "merchant_id")
     private Integer merchantId;
     private String status = Constants.ACTIVE_STATUS;
+    private String type;
 
-    public void setCreate(CategoryCreateReq data) {
+    public void setCreate(CategoryReq data) {
         this.code = data.getCode();
         this.nameEn = data.getNameEn();
         this.nameKh = data.getNameKh();
@@ -38,9 +38,10 @@ public class Category extends BaseEntity {
         this.status = Constants.ACTIVE_STATUS;
         this.setCreateAt(new Date());
         this.setCreateBy(Constants.APP);
+        this.type = data.getType();
     }
 
-    public void setUpdate(CategoryUpdateReq data) {
+    public void setUpdate(CategoryReq data) {
         this.id = data.getId();
         this.code = data.getCode();
         this.nameEn = data.getNameEn();
@@ -50,6 +51,7 @@ public class Category extends BaseEntity {
         this.status = Constants.ACTIVE_STATUS;
         this.setUpdateAt(new Date());
         this.setUpdateBy(Constants.APP);
+        this.type = data.getType();
     }
 
 

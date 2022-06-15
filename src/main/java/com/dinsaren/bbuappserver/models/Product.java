@@ -1,8 +1,7 @@
 package com.dinsaren.bbuappserver.models;
 
 import com.dinsaren.bbuappserver.constants.Constants;
-import com.dinsaren.bbuappserver.payload.req.ProductCreateReq;
-import com.dinsaren.bbuappserver.payload.req.ProductUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.ProductReq;
 import com.dinsaren.bbuappserver.utils.BaseEntity;
 import lombok.Data;
 
@@ -42,7 +41,7 @@ public class Product extends BaseEntity {
     private Integer merchantId;
     private String status;
 
-    public void setCreate(ProductCreateReq data) {
+    public void setCreate(ProductReq data) {
         this.code = data.getCode();
         this.barcode = data.getBarcode();
         this.qrCode = data.getQrCode();
@@ -60,7 +59,7 @@ public class Product extends BaseEntity {
         this.setCreateBy(Constants.APP);
     }
 
-    public void setUpdate(ProductUpdateReq data) {
+    public void setUpdate(ProductReq data) {
         this.id = data.getId();
         this.code = data.getCode();
         this.barcode = data.getBarcode();

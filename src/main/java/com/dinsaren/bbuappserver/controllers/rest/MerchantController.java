@@ -1,13 +1,9 @@
 package com.dinsaren.bbuappserver.controllers.rest;
 
 import com.dinsaren.bbuappserver.payload.req.MerchantReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeCreateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeUpdateReq;
 import com.dinsaren.bbuappserver.payload.res.MerchantRes;
 import com.dinsaren.bbuappserver.payload.res.MessageRes;
-import com.dinsaren.bbuappserver.payload.res.UnitTypeRes;
 import com.dinsaren.bbuappserver.service.MerchantService;
-import com.dinsaren.bbuappserver.service.UnitTypeService;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

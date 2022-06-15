@@ -1,10 +1,7 @@
 package com.dinsaren.bbuappserver.models;
 
 import com.dinsaren.bbuappserver.constants.Constants;
-import com.dinsaren.bbuappserver.payload.req.ProductUnitCreateReq;
-import com.dinsaren.bbuappserver.payload.req.ProductUnitUpdateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeCreateReq;
-import com.dinsaren.bbuappserver.payload.req.UnitTypeUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.ProductUnitReq;
 import com.dinsaren.bbuappserver.utils.BaseEntity;
 import lombok.Data;
 
@@ -29,7 +26,7 @@ public class ProductUnit extends BaseEntity {
     private BigDecimal price;
     private String status;
 
-    public void setCreate(ProductUnitCreateReq data){
+    public void setCreate(ProductUnitReq data){
         this.productId = data.getProductId();
         this.unitTypeId = data.getUnitTypeId();
         this.cost = data.getCost();
@@ -39,7 +36,7 @@ public class ProductUnit extends BaseEntity {
         this.setCreateBy(Constants.APP);
     }
 
-    public void setUpdate(ProductUnitUpdateReq data){
+    public void setUpdate(ProductUnitReq data){
         this.id = data.getId();
         this.productId = data.getProductId();
         this.unitTypeId = data.getUnitTypeId();

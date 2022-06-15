@@ -2,8 +2,7 @@ package com.dinsaren.bbuappserver.service.impl;
 
 import com.dinsaren.bbuappserver.constants.Constants;
 import com.dinsaren.bbuappserver.models.Category;
-import com.dinsaren.bbuappserver.payload.req.CategoryCreateReq;
-import com.dinsaren.bbuappserver.payload.req.CategoryUpdateReq;
+import com.dinsaren.bbuappserver.payload.req.CategoryReq;
 import com.dinsaren.bbuappserver.payload.res.CategoryRes;
 import com.dinsaren.bbuappserver.repository.CategoryRepository;
 import com.dinsaren.bbuappserver.service.CategoryService;
@@ -32,14 +31,14 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void create(CategoryCreateReq req) {
+    public void create(CategoryReq req) {
         Category category = new Category();
         category.setCreate(req);
         categoryRepository.save(category);
     }
 
     @Override
-    public void delete(CategoryUpdateReq req) {
+    public void delete(CategoryReq req) {
         var category = categoryRepository.findById(req.getId());
         if (category.isPresent()) {
             category.get().setUpdate(req);
@@ -49,7 +48,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void update(CategoryUpdateReq req) {
+    public void update(CategoryReq req) {
         var category = categoryRepository.findById(req.getId());
         if (category.isPresent()) {
             category.get().setUpdate(req);
