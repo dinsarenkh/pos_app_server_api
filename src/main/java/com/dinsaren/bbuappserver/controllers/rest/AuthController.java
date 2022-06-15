@@ -107,6 +107,11 @@ public class AuthController {
         roles.add(userRole);
 
         user.setRoles(roles);
+        user.setAddress(req.getAddress());
+        user.setAddress(req.getAddress());
+        user.setProfile(req.getProfile());
+        user.setNationalId(req.getNationalId());
+        user.setNationalImage(req.getNationalImage());
         user.setStatus(Constants.ACTIVE_STATUS);
         userRepository.save(user);
         resMessage = new MessageRes();
