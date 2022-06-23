@@ -71,8 +71,18 @@ public class AuthController {
                 .collect(Collectors.toList());
 
         RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId());
-        resMessage.setGetDateMessageSuccess(new JwtRes(jwt, refreshToken.getToken(), userDetails.getId(),
-                userDetails.getUsername(), userDetails.getEmail(), roles));
+        var res = new JwtRes();
+        res.setEmail(userDetails.getEmail());
+        res.setUsername(userDetails.getUsername());
+        res.setRefreshToken(refreshToken.getToken());
+        res.setToken(jwt);
+        res.setRefreshToken(refreshToken.getToken());
+        res.setAddress(userDetails.getAddress());
+        res.setProfile(userDetails.getProfile());
+        res.setNationalId(userDetails.getNationalId());
+        res.setNationalImage(userDetails.getNationalImage());
+        res.setRoles(roles);
+        resMessage.setGetDateMessageSuccess(res);
         return ResponseEntity.ok(resMessage);
     }
 
@@ -107,7 +117,6 @@ public class AuthController {
         roles.add(userRole);
 
         user.setRoles(roles);
-        user.setAddress(req.getAddress());
         user.setAddress(req.getAddress());
         user.setProfile(req.getProfile());
         user.setNationalId(req.getNationalId());

@@ -13,25 +13,31 @@ import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
-
-	private Long id;
-
-	private String username;
-
-	private String email;
+	private final Long id;
+	private final String username;
+	private final String email;
+	private final String profile;
+	private final String nationalId;
+	private final String nationalImage;
+	private final String address;
 
 	@JsonIgnore
-	private String password;
+	private final String password;
 
-	private Collection<? extends GrantedAuthority> authorities;
+	private final Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Long id, String username, String email, String password,
-			Collection<? extends GrantedAuthority> authorities) {
+	public UserDetailsImpl(Long id, String username, String email, String password, String profile, String nationalId,
+						   String nationalImage, String address,
+						   Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.authorities = authorities;
+		this.profile = profile;
+		this.nationalId = nationalId;
+		this.nationalImage = nationalImage;
+		this.address = address;
 	}
 
 	public static UserDetailsImpl build(User user) {
@@ -40,16 +46,36 @@ public class UserDetailsImpl implements UserDetails {
 				.collect(Collectors.toList());
 
 		return new UserDetailsImpl(
-				user.getId(), 
-				user.getUsername(), 
+				user.getId(),
+				user.getUsername(),
 				user.getEmail(),
-				user.getPassword(), 
+				user.getPassword(),
+				user.getProfile(),
+				user.getNationalId(),
+				user.getNationalImage(),
+				user.getAddress(),
 				authorities);
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public String getNationalId() {
+		return nationalId;
+	}
+
+	public String getNationalImage() {
+		return nationalImage;
+	}
+
+	public String getAddress() {
+		return address;
 	}
 
 	public Long getId() {
