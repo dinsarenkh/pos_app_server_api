@@ -72,7 +72,7 @@ public class AuthController {
         RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId());
 
         return ResponseEntity.ok(new JwtRes(jwt, refreshToken.getToken(), userDetails.getId(),
-                userDetails.getUsername(), userDetails.getEmail(), roles));
+                userDetails.getUsername(), userDetails.getEmail(), roles,userDetails.getUsername()));
     }
 
     @PostMapping("/register")
@@ -94,35 +94,10 @@ public class AuthController {
         User user = new User(req.getUsername(), req.getEmail(),
                 encoder.encode(req.getPassword()), req.getPhone());
 
-//        Set<String> strRoles = req.getRole();
         Set<Role> roles = new HashSet<>();
-//
-//        if (strRoles == null) {
         Role userRole = roleRepository.findByName(UserRole.ROLE_USER)
                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
         roles.add(userRole);
-//        } else {
-//            strRoles.forEach(role -> {
-//                switch (role) {
-//                    case "admin":
-//                        Role adminRole = roleRepository.findByName(UserRole.ROLE_ADMIN)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(adminRole);
-//
-//                        break;
-//                    case "mod":
-//                        Role modRole = roleRepository.findByName(UserRole.ROLE_MODERATOR)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(modRole);
-//
-//                        break;
-//                    default:
-//                        Role userRole = roleRepository.findByName(UserRole.ROLE_USER)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(userRole);
-//                }
-//            });
-//        }
 
         user.setRoles(roles);
         user.setStatus(Constants.ACTIVE_STATUS);

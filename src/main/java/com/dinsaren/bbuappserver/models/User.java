@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(	name = "bbu_users",
+@Table(	name = "bbu_pos_users",
 		uniqueConstraints = { 
 			@UniqueConstraint(columnNames = "username"),
 			@UniqueConstraint(columnNames = "email") 
@@ -22,7 +22,7 @@ public class User {
 	private String status;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "bbu_user_roles",
+	@JoinTable(	name = "bbu_pos_user_roles",
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();

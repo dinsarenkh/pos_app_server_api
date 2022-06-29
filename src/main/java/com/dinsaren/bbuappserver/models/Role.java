@@ -3,7 +3,7 @@ package com.dinsaren.bbuappserver.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bbu_roles")
+@Table(name = "bbu_pos_roles")
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

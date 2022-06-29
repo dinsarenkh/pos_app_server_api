@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(	name = "bbu_product")
+@Table(	name = "bbu_pos_product")
 @Data
 public class Product {
     @Id
