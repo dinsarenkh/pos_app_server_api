@@ -1,8 +1,6 @@
 package com.dinsaren.bbuappserver.service;
 
-import com.dinsaren.bbuappserver.models.Category;
 import com.dinsaren.bbuappserver.payload.request.ProductReq;
-import com.dinsaren.bbuappserver.payload.response.CategoryRes;
 import com.dinsaren.bbuappserver.payload.response.ProductRes;
 
 import java.util.List;

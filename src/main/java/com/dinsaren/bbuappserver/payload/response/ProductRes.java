@@ -5,8 +5,6 @@ import com.dinsaren.bbuappserver.models.Category;
 import com.dinsaren.bbuappserver.models.Product;
 import lombok.Data;
 
-import javax.persistence.*;
-
 
 @Data
 public class ProductRes {

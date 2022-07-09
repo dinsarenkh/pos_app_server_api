@@ -4,8 +4,6 @@ import com.dinsaren.bbuappserver.constants.Constants;
 import com.dinsaren.bbuappserver.models.Category;
 import lombok.Data;
 
-import javax.persistence.*;
-
 @Data
 public class CategoryRes {
     private Long id;

@@ -1,7 +1,6 @@
 package com.dinsaren.bbuappserver.payload.request;
 
 import com.dinsaren.bbuappserver.constants.Constants;
-import com.dinsaren.bbuappserver.models.Category;
 import com.dinsaren.bbuappserver.models.Product;
 import lombok.Data;
 

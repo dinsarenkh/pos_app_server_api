@@ -1,9 +1,7 @@
 package com.dinsaren.bbuappserver.controllers.rest;
 
-import com.dinsaren.bbuappserver.payload.response.CategoryRes;
 import com.dinsaren.bbuappserver.payload.response.MessageRes;
 import com.dinsaren.bbuappserver.payload.response.ProductRes;
-import com.dinsaren.bbuappserver.service.CategoryService;
 import com.dinsaren.bbuappserver.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
