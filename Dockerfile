@@ -20,6 +20,6 @@
 #ENTRYPOINT ["java","-Duser.timezone=TH","-jar","bbu-app-server.jar"]
 
 FROM openjdk:11
-EXPOSE 20033
+EXPOSE 20044
 ADD target/bbu-app-server-0.0.1-SNAPSHOT.war bbu-app-server.jar
 ENTRYPOINT ["java","-jar","/bbu-app-server.jar"]
